@@ -1,0 +1,43 @@
+#include <iostream>
+
+int main() {
+  string Fam;
+    int Stage;
+    double H_pay;
+    int Hours;
+public:
+    void set_Info()
+    {
+        cout<<"\nВведите ФИО - ";
+        getline(cin,Fam);
+        cout<<"\nВведите Стаж работы - ";
+        cin>>Stage;
+        cout<<"\nВведите часовую заработную плату - ";
+        cin>>H_pay;
+        cout<<"\nВведите количество отработанных часов - ";
+        cin>>Hours;
+        string error;
+        getline(cin,error);
+    }
+    void print_info(ostream &stream )
+    {
+        stream<<"\ ФИО - "<<Fam;
+        stream<<"\n Стаж работы - "<<Stage;
+        stream<<"\n Часовая заработная плата - "<<H_pay;
+        stream<<"\n Количество отработанных часов - "<<Hours;
+        stream<<"\n Заработная Плата - "<<Hours*H_pay;
+        if(Stage<=1) stream <<"\n Премия - "<<Hours*H_pay*0;
+        else if(Stage<=3) stream<<"\n Премия - "<<Hours*H_pay*0.05;
+        else if(Stage<=5) stream<<"\n Премия - "<<Hours*H_pay*0.08;
+        else  stream<<"\n Премия - "<<Hours*H_pay*0.15;
+    }
+    void Save()
+    {
+        string save;
+        cout<<"\nВведите путь Сохранения - ";
+        getline(cin,save);
+        ofstream t1(save);
+        print_info(t1);
+        cout<<"\nСохранено в "<<save<<endl;
+    }
+};
